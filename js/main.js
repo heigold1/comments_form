@@ -76,6 +76,7 @@ function validateComments(comments)
 	}
 	else
 	{
+		$("#comments_error").html("");
 		return true;
 	}
 }
