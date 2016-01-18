@@ -107,6 +107,11 @@ function validateFields()
 
 $(function() {
 
+firstName = $("#first_name").val("");
+lastName = $("#last_name").val("");
+email = $("#email").val("");
+comments = $("#comments").val("");
+
 $("#submit_button").click(function(){
 
 	if (validateFields())
@@ -131,10 +136,54 @@ $("#submit_button").click(function(){
             success: function (msg) 
             {
             	alert(msg.return_value);
-            	var new_tr = "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>" + email + "</td><td>" + comment + "</td></tr>";
 
-            	alert("about to add " + new_tr);
+			var currentdate = new Date(); 
+			var month = currentdate.getMonth() + 1; 
+				if (month < 10)
+				{
+					month = "0" + month.toString();
+				} 
+
+			var day = currentdate.getDate(); 
+				if (day < 10)
+				{
+					day = "0" + day.toString();
+				}
+
+			var hour = currentdate.getHours();
+				if (hour < 10)
+				{
+					hour = "0" + hour.toString();
+				}
+
+			var minute = currentdate.getMinutes();
+				if (minute < 10)
+				{
+					minute = "0" + minute.toString();
+				}
+
+			var second = currentdate.getSeconds();
+				if (second < 10)
+				{
+					second = "0" + second.toString();
+				}
+
+var dateTime =  + currentdate.getFullYear() + "-"
+				+ month  + "-" 
+                + day  + " " 
+                + hour + ":"  
+                + minute + ":" 
+                + second;
+
+            	var new_tr = "<tr><td>" + firstName + "</td><td>" + lastName + "</td><td>" + email + "</td><td>" + comments + "</td><td>" + dateTime + "</td></tr>";
+
             	$('#main_table tr:last').after(new_tr);
+
+				firstName = $("#first_name").val("");
+				lastName = $("#last_name").val("");
+				email = $("#email").val("");
+				comments = $("#comments").val("");
+
            	},
             error: function(data) {
                 successmessage = 'Error';

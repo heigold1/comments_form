@@ -27,7 +27,7 @@
   <font color="red" style="italilc"><b>* = required</b></font>
 
 <div class = "header">  
-		<h1>Posted Comments (refresh page to see latest/newest comments)</h1>
+		<h1>Posted Comments</h1>
 </div>
 <div id="report">
 
@@ -50,7 +50,8 @@ $hostname = "heigold1.apollomysql.com";
     	SELECT  first_name, 
     			last_name, 
     			email, 
-    			comments 
+    			comments, 
+    			date_time
     	FROM feedback
     " 
  );
@@ -60,13 +61,14 @@ $hostname = "heigold1.apollomysql.com";
 
 
 echo "	<tr>
-			<td>First Name</td><td>Last Name</td><td>Email</td><td>Comments</td>
+			<td>First Name</td><td>Last Name</td><td>Email</td><td>Comments</td><td>Date/Time</td>
 		<tr>";
 
  while ($row = mysqli_fetch_assoc($result)) 
  {
  	echo "<tr>
- 			<td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['comments']. "</td></tr>";
+ 			<td>" . $row['first_name'] . "</td><td>" . $row['last_name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['comments']. "</td><td>" . $row['date_time'] . "</td>
+ 		  </tr>";
 
  }
 

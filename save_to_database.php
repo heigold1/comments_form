@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 $username = "brent";
 $password = "brent";
-$hostname = "heigold1.apollomysql.com"; 
+$hostname = "localhost"; 
 
 //connection to the database
  $dbhandle = mysqli_connect($hostname, $username, $password)
